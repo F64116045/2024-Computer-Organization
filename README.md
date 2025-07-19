@@ -11,7 +11,7 @@ $ riscv64-unknown-linux-gnu-gcc -static -o hello hello.c
 $ spike --isa=RV64GC /opt/riscv/riscv64-unknown-linux-gnu/bin/pk hello
 ```
 
-## Homework 1 
+# Homework 1 
 μRISC-V: An Enhanced RISC-V Processor Design using Spike
 ### `1.c` - 基本除法運算
 讀入兩整數 `a, b`，透過 RISC-V 的 `div` 指令完成 `a / b`：
@@ -35,7 +35,7 @@ loop1:
 ```
 學習以組語完整模擬 C 語言控制流程。
 
-## Homework 2
+# Homework 2
 Performance Modeling for the μRISC-V Processor
 透過撰寫 inline assembly 並插入計數器，統計各類指令數量並計算週期與 CPU 時間，進一步判斷程式為 CPU-bound 或 Memory-bound。
 ### `pi.c`
@@ -54,7 +54,7 @@ Performance Modeling for the μRISC-V Processor
 ### `arraymul_improved_version2.c`
 - 延續 version1 實作，但使用 vlen=256 配置。
 
-## Homework 3
+# Homework 3
 Reducing Memory Access Overhead for the μRISC-V Processor
 ##  FIFO Cache Replacement Policy
 
