@@ -15,15 +15,15 @@ $ spike --isa=RV64GC /opt/riscv/riscv64-unknown-linux-gnu/bin/pk hello
 μRISC-V: An Enhanced RISC-V Processor Design using Spike
 ### `1.c` - 基本除法運算
 讀入兩整數 `a, b`，透過 RISC-V 的 `div` 指令完成 `a / b`：
----
+
 
 ### `2.c` - 陣列元素除法
 執行 `c[i] = a[i] / b[i]`，使用指標與組語進行迴圈計算與遞增：
----
+
 
 ### `3.c` - 矩陣乘向量（內層迴圈）
 以三層巢狀迴圈實作矩陣 `h[3x3]` 乘向量 `x[2x3]`，輸出為 `y[3x2]`，僅將最內層乘加運算改為 inline assembly，並透過標籤與 `beq` 實現分支邏輯與條件跳轉。
----
+
 
 ### `4.c` - 矩陣乘向量（完整迴圈）
 完全以 inline assembly 取代三層巢狀迴圈邏輯，包括 index 變數初始化、條件判斷、記憶體位移與加總操作：
@@ -64,21 +64,21 @@ Reducing Memory Access Overhead for the μRISC-V Processor
 - `victimize()` 中總是替換最早進入的 way
 
 
-##  Q1: Convolution - conv2d-better.S
+##  Q1: Convolution - `conv2d-better.S`
 
 > RV64I ，改寫 2D 卷積計算流程
 原本的 `conv2d.S` 的 i/j 迴圈順序為 j 外、i 內（不利於 row-major 的資料排列）
 - 重寫整體迴圈結構，明確以 `i` 為外層、`j` 為內層迴圈，更符合 cache-friendly 存取
 有助於減少 cache miss。
 
-## Q2： Matrix Multiplication - mm-better.c
+## Q2： Matrix Multiplication - `mm-better.c`
 
 ### `mm.c`
 - 一般 triple loop：x, y, z
 - 每次都整個 row × col，cache reuse 效果差
 - 沒有 blocking，造成 memory 重複 load
 
-### mm-better.c
+### `mm-better.c`
 - 利用區塊操作增加資料 reuse 機會
 - 減少跨 row 與 col 的 cache line reload
 - Blocking 範圍依 cache 尺寸調整 (這邊定BLOCK_SIZE = 8 )
